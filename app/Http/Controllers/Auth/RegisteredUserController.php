@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Inertia\Inertia;
@@ -17,8 +18,9 @@ class RegisteredUserController extends Controller
 
 
 
-    public function index(){
-        return User::all();
+    public function index()
+    {
+        return Inertia::render('Users', ['users' => User::all()]);
     }
 
     /**
@@ -60,5 +62,13 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect('/main');
+    }
+
+    public function show(String $name)
+    {
+        $user = DB::table('users')->where('name', $name)->first();
+        $orders = DB::table('orders')->where('name', $name)->get();
+        $contactus = DB::table('contact_us')->where('name', $name)->get();
+        return Inertia::render('User', ['user' => $user, 'orders'=>$orders, 'contactus'=>$contactus]);
     }
 }

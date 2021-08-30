@@ -58,8 +58,8 @@ class SizeController extends Controller
     public function show(Size $size, String $pricelist)
     {
         //
-        $ad = DB::table('sizes')->where('name',$pricelist)->get();
-        return inertia::render('Buy', ['ad' => $ad[0]]);
+        $ad = DB::table('sizes')->where('name',$pricelist)->first();
+        return inertia::render('Buy', ['ad' => $ad]);
     }
 
     /**
@@ -71,9 +71,9 @@ class SizeController extends Controller
     public function edit(String $str)
     {
         //
-        $data = DB::table('sizes')->where('id', $str)->get();
+        $data = DB::table('sizes')->where('id', $str)->first();
 
-        return inertia::render('EditSizeForm', ['ad' => $data[0]]);
+        return inertia::render('EditSizeForm', ['ad' => $data]);
     }
 
     /**
@@ -86,7 +86,7 @@ class SizeController extends Controller
     public function update(Request $request, Size $size, String $pricelist)
     {
         //
-        $size = DB::table('sizes')->where('id',$pricelist)->get();
+        $size = DB::table('sizes')->where('id',$pricelist)->first();
         // $path = $request->file('file')->getClientOriginalName();
         // dd($path);
         DB::table('sizes')->where('id', $pricelist)->update([

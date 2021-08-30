@@ -71,9 +71,9 @@ class BulletinController extends Controller
     public function edit(Bulletin $bulletin, String $pastbulletin)
     {
         //
-        $data = DB::table('bulletins')->where('id', $pastbulletin)->get();
+        $data = DB::table('bulletins')->where('id', $pastbulletin)->first();
         // dd($data);
-        return inertia::render('EditBulletinForm', ['ad' => $data[0]]);
+        return inertia::render('EditBulletinForm', ['ad' => $data]);
     }
 
     /**
@@ -104,8 +104,8 @@ class BulletinController extends Controller
     public function destroy(Bulletin $bulletin, String $pastbulletins)
     {
         //
-        $bulletin = DB::table('bulletins')->where('id', $pastbulletins)->get();
-        Storage::delete('images/'.$bulletin[0]->path);
+        $bulletin = DB::table('bulletins')->where('id', $pastbulletins)->first();
+        Storage::delete('images/'.$bulletin->path);
         DB::table('bulletins')->where('id', $pastbulletins)->delete();
         return redirect('/pastbulletins');
     }

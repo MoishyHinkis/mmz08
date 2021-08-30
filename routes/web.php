@@ -44,5 +44,6 @@ Route::get('/order', [OrderController::class, 'index'])->middleware('admin');
 Route::post('/order', [OrderController::class, 'store']);
 Route::delete('/order/{id}', [OrderController::class, 'destroy'])->middleware('admin');
 
- Route::get('/users', [RegisteredUserController::class, 'index']);
+ Route::get('/users', [RegisteredUserController::class, 'index'])->middleware('admin');
+ Route::get('/user/{name}', [RegisteredUserController::class, 'show'])->middleware('admin');
 require __DIR__ . '/auth.php';

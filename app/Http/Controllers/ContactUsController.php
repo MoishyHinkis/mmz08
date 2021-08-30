@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
+use App\Providers\RouteServiceProvider;
 
 class ContactUsController extends Controller
 {
@@ -46,7 +47,7 @@ class ContactUsController extends Controller
             'phone' => $request->input('phone'),
             'subject' => $request->input('subject'),
         ]);
-        Mail::to('mthinkis@gmail.com')->send(new ContactUsMail($contactus));
+        Mail::to(RouteServiceProvider::ADMIN)->send(new ContactUsMail($contactus));
         return redirect('/contactus/create');
     }
 

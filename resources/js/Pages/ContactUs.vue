@@ -80,7 +80,6 @@ export default {
   methods: {
     sendForm() {
       if (this.$page.props.auth.user) {
-        alert(this.$page.props.auth.user.phone);
         this.form.name = this.$page.props.auth.user.name;
         this.form.email = this.$page.props.auth.user.email;
         this.form.phone = this.$page.props.auth.user.phone;

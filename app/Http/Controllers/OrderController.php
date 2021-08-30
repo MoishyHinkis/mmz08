@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\OrderMail;
 use App\Models\Order;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
@@ -61,7 +62,7 @@ class OrderController extends Controller
             'comments' => $request->input('comments'),
             'file_path' => $filePath,
         ]);
-        Mail::to('mthinkis@gmail.com')->send(
+        Mail::to(RouteServiceProvider::ADMIN)->send(
             new OrderMail(
                 $order,
                 $file
@@ -116,9 +117,9 @@ class OrderController extends Controller
     public function destroy(Order $order, String $id)
     {
         //
-        $order = DB::table('orders')->where('id',$id)->get();
+        $order = DB::table('orders')->where('id',$id)->first();
         DB::table('orders')->where('id',$id)->delete();
-        Storage::delete('orders/'.$order[0]->file_path);
+        Storage::delete('orders/'.$order->file_path);
         return redirect('/order');
         
     }
