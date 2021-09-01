@@ -8,7 +8,9 @@
           ><br />
           <Link href="/" class="w3-margin">back to main page &rarr;</Link>
         </div>
-        <ad :ad="ad" class="image"></ad>
+        <div class="w3-container w3-center">
+          <ad :ad="ad" class="image"></ad>
+        </div>
         <div class="w3-display-topmiddle w3-margin w3-border">
           <div class="w3-center w3-margin">
             <validation-errors></validation-errors>

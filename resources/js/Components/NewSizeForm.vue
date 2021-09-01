@@ -7,7 +7,7 @@
         <label for="name">name</label><br />
         <input type="text" name="name" v-model="form.name" /><br /><br />
         <label for="price">price</label><br />
-        <input type="number" name="price" v-model="form.price"/><br /><br />
+        <input type="number" name="price" v-model="form.price"/> <i class="fas fa-shekel-sign"></i><br /><br />
         <input type="file" @input="filePath" required/><br /><br />
         <button class="w3-btn" type="submit">Add Size</button>
       </form>

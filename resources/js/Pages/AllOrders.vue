@@ -5,7 +5,7 @@
         >back to {{ Back }} &rarr;</Link
       >
     </div>
-    <div class="w3-row">
+    <div class="w3-content">
       <div
         class="w3-card w3-quarter w3-margin"
         v-for="order in orders"

@@ -64,11 +64,11 @@ class RegisteredUserController extends Controller
         return redirect('/main');
     }
 
-    public function show(String $name)
+    public function show(Request $request)
     {
-        $user = DB::table('users')->where('name', $name)->first();
-        $orders = DB::table('orders')->where('name', $name)->get();
-        $contactus = DB::table('contact_us')->where('name', $name)->get();
-        return Inertia::render('User', ['user' => $user, 'orders'=>$orders, 'contactus'=>$contactus]);
+        $user = DB::table('users')->where('name', $request->name)->first();
+        $orders = DB::table('orders')->where('name', $request->name)->get();
+        $contactus = DB::table('contact_us')->where('name', $request->name)->get();
+        return Inertia::render('User', ['user' => $user, 'orders' => $orders, 'contactus' => $contactus]);
     }
 }

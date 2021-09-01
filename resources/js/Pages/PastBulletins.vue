@@ -11,7 +11,7 @@
             </div>
           </div>
           <new-bulletin-form v-show="AddNewBulletin"></new-bulletin-form>
-          <div class="w3-row">
+          <div class="w3-content">
               <div
                 class="w3-quarter w3-margin w3-card"
                 v-for="(ad, adKey) in ads"

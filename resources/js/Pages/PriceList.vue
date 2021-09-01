@@ -12,33 +12,33 @@
           </div>
         </div>
         <new-size-form v-show="AddNewSize"></new-size-form>
-        <div class="w3-row">
+        <div class="w3-container">
+          <div class="w3-content">
             <div
-              class="w3-quarter w3-margin w3-card"
+              class="w3-quarter w3-margin w3-card w3-mobile"
               v-for="(ad, adKey) in ads"
               :key="adKey"
             >
               <div v-if="auth">
-                <div
-                  v-if="$page.props.auth.user.email === admin"
-                >
-                  <x-on-ad :ad="ad" Referrer="pricelist">
+                <div v-if="$page.props.auth.user.email === admin">
+                  <x-on-ad :ad="ad" footerSign="fas fa-shekel-sign" Referrer="pricelist">
                     <Link :href="`pricelist/${ad.name}`">
-                      <ad :ad="ad"></ad>
+                      <ad :ad="ad" footerSign="fas fa-shekel-sign" ></ad>
                     </Link>
                   </x-on-ad>
                 </div>
                 <div v-else>
                   <Link :href="`pricelist/${ad.name}`">
-                    <ad :ad="ad"></ad>
+                    <ad :ad="ad" footerSign="fas fa-shekel-sign" ></ad>
                   </Link>
                 </div>
               </div>
               <div v-else>
                 <Link :href="`pricelist/${ad.name}`">
-                  <ad :ad="ad"></ad>
+                  <ad :ad="ad" footerSign="fas fa-shekel-sign" ></ad>
                 </Link>
               </div>
+            </div>
           </div>
         </div>
       </layout>
@@ -67,7 +67,7 @@ export default {
   data() {
     return {
       AddNewSize: false,
-      admin: 'Mthinkis@gmail.com',
+      admin: "Mthinkis@gmail.com",
       auth: this.$page.props.auth.user,
     };
   },
