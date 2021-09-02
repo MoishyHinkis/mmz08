@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration
             $table->longText('text')->nullable();
             $table->longText('comments')->nullable();
             $table->string('file_path')->nullable();
+            $table->integer('price')->nullable();
             $table->timestamps();
         });
     }

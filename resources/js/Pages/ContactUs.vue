@@ -7,9 +7,7 @@
             <Link href="/contactus">show all forms &rarr;</Link>
           </button>
         </div>
-        <div class="w3-content">
-          <div class="w3-col l4 m4 w3-hide-small w3-text-white">space</div>
-          <div class="w3-col l4 m4 w3-mobile w3-margin w3-card">
+          <div class="w3-mobile w3-card center form">
             <h3 class="w3-border-bottom w3-center">Contact Us Form</h3>
             <validation-errors></validation-errors>
             <form @submit.prevent="sendForm" class="w3-container w3-margin">
@@ -54,8 +52,6 @@
                 </button>
               </div>
             </form>
-          </div>
-          <div class="w3-col l4 m4 w3-hide-small w3-text-white">space</div>
         </div>
       </layout>
     </div>
@@ -112,3 +108,16 @@ export default {
   },
 };
 </script>
+<style>
+  .space{
+    color:  rgb(236, 239, 248)
+  }
+  .center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .form{
+    width: 25%;
+  }
+</style>

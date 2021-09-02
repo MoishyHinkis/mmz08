@@ -3,62 +3,58 @@
     <layout>
       <div class="lightblue">
         <div class="w3-content">
-          <div class="w3-col l3 m3 s3 w3-margin w3-text-cadetblue">space</div>
-          <div class="w3-col l5 m5 s5 w3-margin">
-            <img src="../../images/logo.jpeg" />
+          <!-- <div class="w3-col l3 m3 s3 w3-margin space">space</div> -->
+          <div class="">
+            <img src="../../images/logo.jpg" />
           </div>
+          <!-- <div class="w3-col l3 m3 s3 w3-margin space">space</div> -->
         </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <div class="w3-right-align w3-padding">
-          בס"ד <br />
-          <h3>לכבוד לקוחותינו היקרים שלום וברכה!</h3>
+        <div class="w3-padding w3-margin">
+          BSD
           <br />
-          <h5 class="w3-text-orange">אנו מודים לכם על שבחרתם לפרסם בעיתוננו</h5>
+          <h3>In honor of our dear customers, hello and congratulations!</h3>
           <br />
-          <p>
-            העיתון ממזרח הינו העיתון השכונתי של נווה יעקב - פסגת זאב - ונווה
-            הפסגה, היוצא לאור מזה למעלה מ20 שנים, ומחולק מידי מוצ"ש ב-12000
-            עותקים בתיבות הדואר.
-          </p>
-          <br />
-          <h5>
-            העיתון מקובל על כל הרבנים וכל החוגים בשכונה, ללא יוצא מן הכלל !!
+          <h5 class="w3-text-orange">
+            Thank you for choosing to publish in our newspaper
           </h5>
           <br />
           <p>
-            ונכנס לכל בית בשכונה, מהסיבה הפשוטה, מי שלא קורא - לא יודע את הדברים
-            הכי חשובים: הודעות של המנהל הקהילתי, בתי ספר, חיידרים,רישום
-            לצהרונים, חלוקת ספרי סלסלה, קופות חולים, הבריכה השכונתית, כל המכולות
-            והצרכניות בשכונה וכו' וכו'.
+            The newspaper from the east is the neighborhood newspaper of Neve
+            Ya'akov - Pisgat Ze'ev - and Neve HaPisga, which has been published
+            for over 20 years, and is distributed every Saturday in 12,000
+            copies in the mailboxes.
           </p>
           <br />
           <h5>
-            העיתון מונה כ-100 עמודים מידי שבוע, ולמעלה מ90% מהמודעות הן מודעות
-            מתוך השכונה.
+            The newspaper is acceptable to all rabbis and all circles in the
+            neighborhood, without exception !!
+          </h5>
+          <br />
+          <p>
+            And enters every house in the neighborhood, for the simple reason,
+            who does not read - does not know the most important things:
+            messages from the community director, schools, hyder, registration
+            for afternoons, distribution of basket books, health funds,
+            neighborhood pool, all containers and consumers in the neighborhood,
+            etc. etc. .
+          </p>
+          <br />
+          <h5>
+            The newspaper counts about 100 pages a week, and over 90% of the ads
+            are ads from the neighborhood.
           </h5>
           <br />
           <h4 class="w3-text-orange">
-            אז אם אתם רותים עיתון שבאמת קוראים אותו - הגעתם למקום הנכון.
+            So if you are a Ruth newspaper that really reads it - you have come
+            to the right place.
           </h4>
           <br />
           <section>
-            נשמח לתת שירות <br />
-            מערכת ממזרח<br />
-            הנהלת "שבח הפקות"
+            We will be happy to provide service
+            <br />
+            Mimizrah system
+            <br />
+            Management of "Shevach Productions"
             <a href="tel:02-5836310">02-5836310</a>
           </section>
         </div>
@@ -82,7 +78,15 @@ h4,
 h5 {
   color: blue;
 }
-.lightblue {
-  background-color: cadetblue;
+.space {
+  color: rgb(236, 239, 248);
+}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: auto;
+  width: 20%;
 }
 </style>

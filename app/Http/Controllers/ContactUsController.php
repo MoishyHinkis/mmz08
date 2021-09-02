@@ -19,7 +19,7 @@ class ContactUsController extends Controller
      */
     public function index()
     {
-        return inertia::render('AllOrders', ['orders'=>ContactUs::all(), 'Back'=>'contactus/create','Referrer'=>'contactus']);
+        return inertia::render('AllOrders', ['orders'=>ContactUs::all(), 'back'=>'contactus/create','referrer'=>'contactus']);
     }
 
     /**

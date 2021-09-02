@@ -17,11 +17,12 @@
         >
       </div>
       <div v-else>
-        <Link
-          href="/privatearea"
+        <button
+          @click="privateArea"
           class="w3-bar-item w3-hover-light-blue w3-mobile"
-          >Private Area</Link
         >
+          Private Area
+        </button>
       </div>
       <div>
         <Link
@@ -48,13 +49,13 @@
       </div>
     </div>
     <div class="w3-bar-item w3-hide-small">
-      <img src="../../images/logo.jpeg" style="width: 60px" />
+      <img src="../../images/logo.jpg" style="width: 60px" />
     </div>
   </div>
 </template>
 
 <script>
-import { Link } from "@inertiajs/inertia-vue3";
+import { Link, useForm } from "@inertiajs/inertia-vue3";
 export default {
   name: "Tabs",
   components: {
@@ -82,6 +83,13 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    privateArea() {
+      const user = useForm(this.$page.props.auth.user);
+      user.get("/user");
+      user.reset();
+    },
   },
 };
 </script>

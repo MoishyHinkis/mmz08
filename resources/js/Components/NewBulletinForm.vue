@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div class="w3-content">
-      <div class="w3-col l4 m4 w3-text-white w3-hide-small">space</div>
-      <div class="w3-col l4 m4 w3-card w3-mobile">
+      <div class="w3-card w3-mobile center new-bulletin">
         <validation-errors></validation-errors>
         <form @submit.prevent="sendForm" class="w3-container">
           <h4 class="w3-center">Add New Bulletin</h4>
@@ -32,8 +30,6 @@
             Add bulletin
           </button>
         </form>
-      </div>
-      <div class="w3-col l4 m4 w3-text-white w3-hide-small">space</div>
     </div>
   </div>
 </template>
@@ -67,3 +63,14 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.new-bulletin{
+  width: 25%;
+}
+</style>

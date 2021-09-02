@@ -15,7 +15,12 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        body {
+            background-color: rgb(236, 239, 248)
+        }
 
+    </style>
     <!-- Scripts -->
     @routes
     <script src="{{ mix('js/app.js') }}" defer></script>

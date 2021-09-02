@@ -2,7 +2,7 @@
   <div>
     <div>
       <i class="fas fa-times w3-text-red" @click="deleted"> </i>
-      <Link :href="`/${Referrer}/${ad.id}/edit`">
+      <Link :href="`/${referrer}/${ad.id}/edit`">
         <i class="fas fa-pen-fancy"></i>
       </Link>
     </div>
@@ -19,7 +19,7 @@ export default {
   },
   props: {
     ad: Object,
-    Referrer: String,
+    referrer: String,
   },
   setup(props) {
     const form = useForm(props.ad);

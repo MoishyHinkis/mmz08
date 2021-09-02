@@ -21,7 +21,7 @@ class OrderController extends Controller
     public function index()
     {
         //
-        return inertia::render('AllOrders', ['orders' => Order::all(), 'Back' => 'pricelist', 'Referrer'=>'order']);
+        return inertia::render('AllOrders', ['orders' => Order::all(), 'back' => 'pricelist', 'referrer'=>'order']);
         // return Order::all();
     }
 
@@ -61,6 +61,7 @@ class OrderController extends Controller
             'text' => $request->input('text'),
             'comments' => $request->input('comments'),
             'file_path' => $filePath,
+            'price' => $request->price
         ]);
         Mail::to(RouteServiceProvider::ADMIN)->send(
             new OrderMail(

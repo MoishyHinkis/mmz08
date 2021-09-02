@@ -18,14 +18,14 @@
           <div class="w3-container">
             <div class="w3-content">
               <div
-                class="w3-col l2 m2 w3-margin w3-card w3-mobile"
+                class="w3-col l2 m2 w3-margin-right w3-section w3-card w3-mobile"
                 v-for="(ad, adKey) in ads"
                 :key="adKey"
               >
                 <div>
                   <x-on-ad
                     :ad="ad"
-                    Referrer="pastbulletins"
+                    referrer="pastbulletins"
                     v-if="Authorization()"
                   >
                   </x-on-ad>

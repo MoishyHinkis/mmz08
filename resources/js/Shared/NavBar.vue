@@ -5,7 +5,7 @@
       <tabs class="w3-hide-small"></tabs>
     </div>
     <!-- sidebae for mobiles -->
-    <div class="w3-orange w3-hide-medium w3-hide-large w3-center">
+    <div class="w3-orange w3-hide-medium w3-hide-large w3-center w3-section">
       <button @click="show = !show">
         <i class="fas fa-bars"></i>
       </button>
