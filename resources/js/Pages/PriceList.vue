@@ -2,12 +2,17 @@
   <div>
     <div>
       <layout>
-        <div v-if="auth">
-          <div v-if="$page.props.auth.user.email === admin">
-            <Link href="/order">show all orders &rarr;</Link>
-
-            <button class="w3-btn" @click="AddNewSize = !AddNewSize">
+        <div class="w3-center">
+          <h3>Price List</h3>
+          <div v-if="Authorization()">
+            <button
+              class="w3-btn w3-green w3-margin"
+              @click="AddNewSize = !AddNewSize"
+            >
               Add New Size
+            </button>
+            <button class="w3-btn w3-green w3-margin">
+              <Link href="/order">show all orders &rarr;</Link>
             </button>
           </div>
         </div>
@@ -15,27 +20,15 @@
         <div class="w3-container">
           <div class="w3-content">
             <div
-              class="w3-quarter w3-margin w3-card w3-mobile"
+              class="w3-col l2 m2 w3-margin w3-card w3-mobile"
               v-for="(ad, adKey) in ads"
               :key="adKey"
             >
-              <div v-if="auth">
-                <div v-if="$page.props.auth.user.email === admin">
-                  <x-on-ad :ad="ad" footerSign="fas fa-shekel-sign" Referrer="pricelist">
-                    <Link :href="`pricelist/${ad.name}`">
-                      <ad :ad="ad" footerSign="fas fa-shekel-sign" ></ad>
-                    </Link>
-                  </x-on-ad>
-                </div>
-                <div v-else>
-                  <Link :href="`pricelist/${ad.name}`">
-                    <ad :ad="ad" footerSign="fas fa-shekel-sign" ></ad>
-                  </Link>
-                </div>
-              </div>
-              <div v-else>
+              <div>
+                <x-on-ad :ad="ad" Referrer="pricelist" v-if="Authorization()">
+                </x-on-ad>
                 <Link :href="`pricelist/${ad.name}`">
-                  <ad :ad="ad" footerSign="fas fa-shekel-sign" ></ad>
+                  <ad :ad="ad" footerSign="fas fa-shekel-sign"></ad>
                 </Link>
               </div>
             </div>
@@ -47,11 +40,11 @@
 </template>
 
 <script>
+import XOnAd from "../Components/XOnAd.vue";
 import NewSizeForm from "../Components/NewSizeForm.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 import Layout from "../Shared/Layout.vue";
 import Ad from "../Components/Ad.vue";
-import XOnAd from "../Components/XOnAd.vue";
 export default {
   name: "PriceList",
   components: {
@@ -68,8 +61,22 @@ export default {
     return {
       AddNewSize: false,
       admin: "Mthinkis@gmail.com",
-      auth: this.$page.props.auth.user,
     };
+  },
+  methods: {
+    Authentication() {
+      if (this.$page.props.auth.user) {
+        return true;
+      }
+      return false;
+    },
+    Authorization() {
+      try {
+        return this.$page.props.auth.user.email === this.admin;
+      } catch (error) {
+        return false;
+      }
+    },
   },
 };
 </script>

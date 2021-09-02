@@ -2,16 +2,17 @@
   <div>
     <div>
       <layout>
-        <div class="w3-display-container w3-margin">
-          <div v-if="$page.props.auth.user">
-            <div v-if="$page.props.auth.user.email === admin">
-              <Link href="/contactus">show all forms</Link>
-            </div>
-          </div>
-          <div class="w3-display-topmiddle w3-border w3-padding">
-            <h3 class="w3-border-bottom">Contact Us Form</h3>
+        <div v-if="Authorization()" class="w3-center">
+          <button class="w3-btn w3-green w3-margin">
+            <Link href="/contactus">show all forms &rarr;</Link>
+          </button>
+        </div>
+        <div class="w3-content">
+          <div class="w3-col l4 m4 w3-hide-small w3-text-white">space</div>
+          <div class="w3-col l4 m4 w3-mobile w3-margin w3-card">
+            <h3 class="w3-border-bottom w3-center">Contact Us Form</h3>
             <validation-errors></validation-errors>
-            <form @submit.prevent="sendForm">
+            <form @submit.prevent="sendForm" class="w3-container w3-margin">
               <div v-if="!$page.props.auth.user">
                 <label for="name">Name</label><br />
                 <input
@@ -19,6 +20,7 @@
                   name="name"
                   v-model="form.name"
                   placeholder="name"
+                  class="w3-input"
                 /><br /><br />
                 <label for="email">Email</label><br />
                 <input
@@ -26,6 +28,7 @@
                   name="email"
                   v-model="form.email"
                   placeholder="Email"
+                  class="w3-input"
                 /><br /><br />
                 <label for="phone">Phone</label><br />
                 <input
@@ -33,6 +36,7 @@
                   name="phone"
                   v-model="form.phone"
                   placeholder="Phone"
+                  class="w3-input"
                 /><br /><br />
               </div>
               <label for="subject">Subject</label><br />
@@ -41,13 +45,17 @@
                 cols="30"
                 rows="5"
                 v-model="form.subject"
+                class="w3-input"
               ></textarea
               ><br /><br />
-              <button class="w3-btn w3-green w3-border" type="submit">
-                Send Form
-              </button>
+              <div class="w3-center">
+                <button class="w3-btn w3-green w3-margin" type="submit">
+                  Send Form
+                </button>
+              </div>
             </form>
           </div>
+          <div class="w3-col l4 m4 w3-hide-small w3-text-white">space</div>
         </div>
       </layout>
     </div>
@@ -58,13 +66,13 @@
 import { useForm } from "@inertiajs/inertia-vue3";
 import Layout from "../Shared/Layout.vue";
 import { Link } from "@inertiajs/inertia-vue3";
-import ValidationErrors from '.././Components/ValidationErrors.vue';
+import ValidationErrors from ".././Components/ValidationErrors.vue";
 export default {
   name: "ContactUs",
   components: {
     Layout,
     Link,
-    ValidationErrors
+    ValidationErrors,
   },
   data() {
     return {
@@ -87,6 +95,19 @@ export default {
       alert("you order recived");
       this.form.post("/contactus");
       this.form.reset();
+    },
+    Authentication() {
+      if (this.$page.props.auth.user) {
+        return true;
+      }
+      return false;
+    },
+    Authorization() {
+      try {
+        return this.$page.props.auth.user.email === this.admin;
+      } catch (error) {
+        return false;
+      }
     },
   },
 };

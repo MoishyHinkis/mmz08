@@ -38,8 +38,8 @@ Route::put('/pastbulletins/{pastbulletins}', [BulletinController::class, 'update
 Route::delete('/pastbulletins/{pastbulletins}', [BulletinController::class, 'destroy'])->middleware('admin');
 Route::get('/contactus', [ContactUsController::class, 'index'])->middleware('admin');
 Route::get('/contactus/create', [ContactUsController::class, 'create']);
-Route::post('/contactus', [ContactUsController::class, 'store'])->middleware('admin');
-Route::delete('/contactus/{contactus}', [ContactUsController::class, 'destroy']);
+Route::post('/contactus', [ContactUsController::class, 'store']);
+Route::delete('/contactus/{contactus}', [ContactUsController::class, 'destroy'])->middleware('admin');
 Route::get('/order', [OrderController::class, 'index'])->middleware('admin');
 Route::post('/order', [OrderController::class, 'store']);
 Route::delete('/order/{id}', [OrderController::class, 'destroy'])->middleware('admin');

@@ -86,10 +86,10 @@ class SizeController extends Controller
     public function update(Request $request, Size $size, String $pricelist)
     {
         //
-        $size = DB::table('sizes')->where('id',$pricelist)->first();
+        $size = DB::table('sizes')->where('name',$pricelist)->first();
         // $path = $request->file('file')->getClientOriginalName();
         // dd($path);
-        DB::table('sizes')->where('id', $pricelist)->update([
+        DB::table('sizes')->where('name', $pricelist)->update([
             'name' => $request->name,
             'footer' => $request->footer,
         ]);

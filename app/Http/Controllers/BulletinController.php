@@ -86,7 +86,7 @@ class BulletinController extends Controller
     public function update(Request $request, Bulletin $bulletin, String $pastbulletins)
     {
         //
-        DB::table('bulletins')->where('id', $pastbulletins)->update([
+        DB::table('bulletins')->where('name', $pastbulletins)->update([
             'name' => $request->input('name'),
             // 'path' => $request->path,
             'link' => $request->input('link'),
@@ -105,7 +105,7 @@ class BulletinController extends Controller
     {
         //
         $bulletin = DB::table('bulletins')->where('id', $pastbulletins)->first();
-        Storage::delete('images/'.$bulletin->path);
+        Storage::delete('images/' . $bulletin->path);
         DB::table('bulletins')->where('id', $pastbulletins)->delete();
         return redirect('/pastbulletins');
     }

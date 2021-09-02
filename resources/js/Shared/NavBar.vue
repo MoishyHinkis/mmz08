@@ -5,9 +5,11 @@
       <tabs class="w3-hide-small"></tabs>
     </div>
     <!-- sidebae for mobiles -->
-    <button @click="show = !show" class="w3-orange w3-hide-medium w3-hide-large">
-      <i class="fa fa-bars"></i>
-    </button>
+    <div class="w3-orange w3-hide-medium w3-hide-large w3-center">
+      <button @click="show = !show">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
     <div
       class="w3-bar-block w3-orange w3-hide-medium w3-hide-large"
       v-show="show"

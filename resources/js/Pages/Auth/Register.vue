@@ -2,31 +2,33 @@
   <div>
     <div>
       <layout>
-        <div class="w3-center">
-          <form @submit.prevent="sendForm">
-            <h3>Register Form</h3>
+        <div class="w3-card">
+          <form @submit.prevent="sendForm" class="w3-container w3-margin">
+            <h3 class="w3-border-bottom w3-center">Register Form</h3><br>
             <validation-errors></validation-errors>
             <label for="name">name</label><br />
-            <input type="text" name="name" v-model="form.name" /><br /><br />
+            <input type="text" name="name" v-model="form.name" class="w3-input" /><br /><br />
             <label for="email">email</label><br />
-            <input type="email" name="email" v-model="form.email" /><br /><br />
+            <input type="email" name="email" v-model="form.email" class="w3-input"/><br /><br />
             <label for="phone">phone</label><br />
-            <input type="number" name="phone" v-model="form.phone" /><br /><br />
+            <input type="number" name="phone" v-model="form.phone" class="w3-input"/><br /><br />
             <label for="password">password</label><br />
             <input
               type="password"
               name="password"
               v-model="form.password"
+              class="w3-input"
             /><br /><br />
             <label for="password password_confirmation"
               >password password_confirmation</label
             ><br />
             <input
               type="password"
-              name="password password_confirmation"
+              name="password confirmation"
               v-model="form.password_confirmation"
+              class="w3-input"
             /><br /><br />
-            <button class="w3-btn" type="submit">regist</button>
+            <button class="w3-btn w3-green w3-margin" type="submit">regist</button>
           </form>
         </div>
       </layout>
