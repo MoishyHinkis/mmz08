@@ -18,14 +18,9 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check()) {
-            if (Auth::user()->email !== RouteServiceProvider::ADMIN) {
-                return redirect('/');
-            }
-            return $next($request);
-        }
-        else {
+        if (Auth::check() && Auth::user()->email !== RouteServiceProvider::ADMIN) {
             return redirect('/');
         }
+        return $next($request);
     }
 }

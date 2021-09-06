@@ -17,7 +17,7 @@ class CreateBulletinsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('path');
-            $table->string('footer');
+            $table->date('date');
             $table->string('link');
             $table->timestamps();
         });

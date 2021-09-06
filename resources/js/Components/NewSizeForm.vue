@@ -10,6 +10,7 @@
             name="name"
             v-model="form.name"
             class="w3-input"
+            required
           /><br /><br />
           <label for="price"
             >price in <i class="fas fa-shekel-sign"></i><br /> </label
@@ -19,7 +20,8 @@
             name="price"
             v-model="form.price"
             class="w3-input"
-          />
+            required
+          /> <br>
           <input
             type="file"
             @input="filePath"
@@ -51,7 +53,7 @@ export default {
 
     function sendForm() {
       alert("your size add");
-      form.post("/pricelist");
+      form.post("/size");
       form.reset();
     }
     function filePath(e) {

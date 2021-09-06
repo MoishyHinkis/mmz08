@@ -1,17 +1,16 @@
 <template>
   <div>
     <layout>
-      <Link href="/pastbulletins" class="w3-text-blue w3-margin"
+      <Link href="/bulletin" class="w3-text-blue w3-margin-right w3-section"
         >canael changes and go back to past bulletins &rarr;</Link
       >
-      <h4 class="w3-center">Edit {{ ad.name }}</h4>
+      <h4 class="w3-center">Edit {{ bulletin.name }}</h4>
 
-      <div class="w3-content">
-        <div class="w3-col l2 m2 w3-text-white m3 w3-hide-small">space</div>
-        <div class="w3-col l4 m4 w3-card m3 w3-mobile w3-margin">
-          <ad :ad="ad"></ad>
+      <div class="w3-cell-row">
+        <div class="w3-cell w3-card m3 w3-mobile w3-margin-right w3-section bulletin">
+          <bulletin :bulletin="bulletin"></bulletin>
         </div>
-        <div class="w3-col l4 m4 w3-card m3 w3-mobile w3-margin">
+        <div class="w3-cell w3-card m3 w3-mobile w3-margin">
           <validation-errors></validation-errors>
           <form @submit.prevent="sendForm" class="w3-container w3-margin">
             <label for="name">name</label><br />
@@ -21,11 +20,11 @@
               v-model="form.name"
               class="w3-input"
             /><br /><br />
-            <label for="footer">footer</label><br />
+            <label for="date">date</label><br />
             <input
               type="text"
               name="fotter"
-              v-model="form.footer"
+              v-model="form.date"
               class="w3-input"
             /><br /><br />
             <label for="link">link</label><br />
@@ -45,14 +44,13 @@
             </button>
           </form>
         </div>
-        <div class="w3-col l2 m2 w3-text-white m3 w3-hide-small">space</div>
       </div>
     </layout>
   </div>
 </template>
 
 <script>
-import Ad from "../Components/Ad.vue";
+import Bulletin from "../Components/Bulletin.vue";
 import Layout from "../Shared/Layout.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
 import ValidationErrors from "../Components/ValidationErrors.vue";
@@ -61,22 +59,28 @@ export default {
   name: "EditBulletinForm",
   components: {
     Layout,
-    Ad,
+    Bulletin,
     ValidationErrors,
     Link,
   },
   props: {
-    ad: Object,
+    bulletin: Object,
   },
   setup(props) {
-    const form = useForm(props.ad);
+    const form = useForm(props.bulletin);
 
     function sendForm() {
       alert("your bulletin edited");
-      form.put(`/pastbulletins/${props.ad.name}`);
+      form.post(`/bulletin/${props.bulletin.id}`);
       form.reset();
     }
     return { form, sendForm };
   },
 };
 </script>
+
+<style scoped>
+  .bulletin{
+    width: 200px;
+  }
+</style>

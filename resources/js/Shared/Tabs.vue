@@ -12,7 +12,7 @@
     </div>
     <div v-if="$page.props.auth.user">
       <div v-if="$page.props.auth.user.email === admin">
-        <Link href="/users" class="w3-bar-item w3-hover-light-blue w3-mobile"
+        <Link href="/user" class="w3-bar-item w3-hover-light-blue w3-mobile"
           >Users</Link
         >
       </div>
@@ -63,23 +63,23 @@ export default {
   },
   data() {
     return {
-      admin: "Mthinkis@gmail.com",
+      admin: this.$page.props.admin,
       tabs: [
         {
-          name: "Main",
+          name: 'Main',
           path: "/main",
         },
         {
           name: "Price List",
-          path: "/pricelist",
+          path: "/size",
         },
         {
           name: "Past Bulletins",
-          path: "/pastbulletins",
+          path: "/bulletin",
         },
         {
           name: "Contact Us",
-          path: "/contactus/create",
+          path: "/contactUs/create",
         },
       ],
     };
@@ -87,8 +87,7 @@ export default {
   methods: {
     privateArea() {
       const user = useForm(this.$page.props.auth.user);
-      user.get("/user");
-      user.reset();
+      user.get(`/user/${user.id}`);
     },
   },
 };

@@ -9,5 +9,5 @@ class Bulletin extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'path', 'footer', 'link'];
+    protected $fillable = ['name', 'path', 'date', 'link'];
 }

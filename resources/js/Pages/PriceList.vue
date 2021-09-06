@@ -21,15 +21,16 @@
           <div class="w3-content">
             <div
               class="w3-col l2 m2 w3-mobile w3-margin-right w3-section w3-card"
-              v-for="(ad, adKey) in ads"
-              :key="adKey"
+              v-for="size in sizes"
+              :key="size.id"
             >
               <div>
-                <x-on-ad :ad="ad" referrer="pricelist" v-if="Authorization()">
+                <x-on-ad :ad="size" referrer="size" v-if="Authorization()">
                 </x-on-ad>
-                <Link :href="`pricelist/${ad.name}`">
-                  <ad :ad="ad" footerSign="fas fa-shekel-sign"></ad>
-                </Link>
+                <button @click="showSize(size)">
+                    <size :size="size"></size>
+                    {{ size.path }}
+                </button>
               </div>
             </div>
           </div>
@@ -42,25 +43,25 @@
 <script>
 import XOnAd from "../Components/XOnAd.vue";
 import NewSizeForm from "../Components/NewSizeForm.vue";
-import { Link } from "@inertiajs/inertia-vue3";
+import { Link, useForm } from "@inertiajs/inertia-vue3";
 import Layout from "../Shared/Layout.vue";
-import Ad from "../Components/Ad.vue";
+import Size from "../Components/Size.vue";
 export default {
   name: "PriceList",
   components: {
     Layout,
-    Ad,
+    Size,
     Link,
     NewSizeForm,
     XOnAd,
   },
   props: {
-    ads: Array,
+    sizes: Array,
   },
   data() {
     return {
       AddNewSize: false,
-      admin: "Mthinkis@gmail.com",
+      admin: this.$page.props.admin,
     };
   },
   methods: {
@@ -76,6 +77,10 @@ export default {
       } catch (error) {
         return false;
       }
+    },
+    showSize(size) {
+      const form = useForm(size);
+      form.get(`/size/${size.id}`);
     },
   },
 };

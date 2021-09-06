@@ -18,11 +18,11 @@ class ContactUsMail extends Mailable
      * @return void
      */
 
-    public $contactus; 
-    public function __construct(ContactUs $contactus)
+    public $contactUs; 
+    public function __construct(ContactUs $contactUs)
     {
         //
-        $this->contactus=$contactus;
+        $this->contactUs=$contactUs;
     }
 
     /**

@@ -3,11 +3,9 @@
     <layout>
       <div class="lightblue">
         <div class="w3-content">
-          <!-- <div class="w3-col l3 m3 s3 w3-margin space">space</div> -->
-          <div class="">
+          <div>
             <img src="../../images/logo.jpg" />
           </div>
-          <!-- <div class="w3-col l3 m3 s3 w3-margin space">space</div> -->
         </div>
         <div class="w3-padding w3-margin">
           BSD
@@ -45,7 +43,7 @@
           </h5>
           <br />
           <h4 class="w3-text-orange">
-            So if you are a Ruth newspaper that really reads it - you have come
+            So if you are a want newspaper that really reads it - you have come
             to the right place.
           </h4>
           <br />
@@ -61,6 +59,7 @@
       </div>
     </layout>
   </div>
+  
 </template>
 
 <script>

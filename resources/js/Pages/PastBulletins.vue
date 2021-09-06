@@ -19,18 +19,18 @@
             <div class="w3-content">
               <div
                 class="w3-col l2 m2 w3-margin-right w3-section w3-card w3-mobile"
-                v-for="(ad, adKey) in ads"
-                :key="adKey"
+                v-for="bulletin in bulletins"
+                :key="bulletin.id"
               >
                 <div>
                   <x-on-ad
-                    :ad="ad"
-                    referrer="pastbulletins"
+                    :ad="bulletin"
+                    referrer="bulletin"
                     v-if="Authorization()"
                   >
                   </x-on-ad>
-                  <a :href="ad.link" target="_blank">
-                    <ad :ad="ad"></ad>
+                  <a :href="bulletin.link" target="_blank">
+                    <bulletin :bulletin="bulletin"></bulletin>
                   </a>
                 </div>
               </div>
@@ -43,25 +43,25 @@
 </template>
 
 <script>
-import Ad from "../Components/Ad.vue";
+import Bulletin from "../Components/Bulletin.vue";
 import Layout from "../Shared/Layout.vue";
 import NewBulletinForm from "../Components/NewBulletinForm.vue";
 import XOnAd from "../Components/XOnAd.vue";
 export default {
   name: "PastBuletins",
   components: {
-    Ad,
+    Bulletin,
     Layout,
     NewBulletinForm,
     XOnAd,
   },
   props: {
-    ads: Array,
+    bulletins: Array,
   },
   data() {
     return {
       AddNewBulletin: false,
-      admin: "Mthinkis@gmail.com",
+      admin: this.$page.props.admin,
     };
   },
   methods: {

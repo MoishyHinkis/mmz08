@@ -11,11 +11,11 @@
             v-model="form.name"
             class="w3-input"
           /><br /><br />
-          <label for="footer">footer</label><br />
+          <label for="date">date</label><br />
           <input
             type="text"
-            name="footer"
-            v-model="form.footer"
+            name="date"
+            v-model="form.date"
             class="w3-input"
           /><br /><br />
           <label for="link">link</label><br />
@@ -45,14 +45,14 @@ export default {
   setup() {
     const form = useForm({
       name: null,
-      footer: null,
+      date: null,
       link: null,
       file: null,
     });
 
     function sendForm() {
       alert("your Bulletin added");
-      form.post("/pastbulletins");
+      form.post("/bulletin");
       form.reset();
     }
 

@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="w3-center w3-margin">
-      <Link :href="`/${back}`" class="w3-orange"
-        >back to {{ back }} &rarr;</Link
+      <Link href="/size" class="w3-orange"
+        >back to price list &rarr;</Link
       >
     </div>
     <div class="w3-content">
@@ -11,7 +11,7 @@
         v-for="order in orders"
         :key="order.id"
       >
-        <x-on-ad :ad="order" :referrer="referrer"> </x-on-ad>
+        <x-on-ad :ad="order" referrer="order"> </x-on-ad>
         <h6 class="w3-center w3-margin">Client Details</h6>
         <br />
         <div class="w3-margin">
@@ -20,7 +20,7 @@
           Phone: {{ order.phone }} <br />
         </div>
 
-        <h6 class="w3-center w3-margin">{{ referrer }} Details</h6>
+        <h6 class="w3-center w3-margin">Order Details</h6>
         <br />
         <div class="w3-margin">
           <div v-if="order.size != null">
@@ -51,8 +51,6 @@ export default {
   },
   props: {
     orders: Array,
-    back: String,
-    referrer: String,
   },
 };
 </script>

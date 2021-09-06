@@ -19,7 +19,7 @@ class ContactUsController extends Controller
      */
     public function index()
     {
-        return inertia::render('AllOrders', ['orders'=>ContactUs::all(), 'back'=>'contactus/create','referrer'=>'contactus']);
+        return inertia::render('AllContactUs', ['contact_us'=>ContactUs::all()]);
     }
 
     /**
@@ -41,14 +41,14 @@ class ContactUsController extends Controller
     public function store(Request $request)
     {
         //
-        $contactus = ContactUs::create([
+        $contactUs = ContactUs::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'phone' => $request->input('phone'),
             'subject' => $request->input('subject'),
         ]);
-        Mail::to(RouteServiceProvider::ADMIN)->send(new ContactUsMail($contactus));
-        return redirect('/contactus/create');
+        Mail::to(RouteServiceProvider::ADMIN)->send(new ContactUsMail($contactUs));
+        return redirect('/contactUs/create');
     }
 
     /**
@@ -91,10 +91,10 @@ class ContactUsController extends Controller
      * @param  \App\Models\ContactUs  $contactUs
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ContactUs $contactUs, String $id)
+    public function destroy(ContactUs $contactUs)
     {
         //
-        DB::table('contact_us')->where('id', $id)->delete();
-        return redirect('/contactus');
+        ContactUs::find($contactUs->id)->delete();
+        return redirect('/contactUs');
     }
 }

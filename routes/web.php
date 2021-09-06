@@ -11,6 +11,8 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CheckController;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,25 +27,24 @@ use App\Http\Controllers\LoginController;
 
 route::inertia('/', 'Main');
 Route::redirect('main', '/');
-Route::get('/pricelist', [SizeController::class, 'index']);
-Route::post('pricelist', [SizeController::class, 'store'])->middleware('admin');
-Route::get('/pricelist/{priselist}', [SizeController::class, 'show']);
-Route::get('/pricelist/{pricelist}/edit', [SizeController::class, 'edit'])->middleware('admin');
-Route::put('/pricelist/{pricelist}', [SizeController::class, 'update'])->middleware('admin');
-Route::delete('/pricelist/{pricelist}', [SizeController::class, 'destroy'])->middleware('admin');
-Route::get('/pastbulletins', [BulletinController::class, 'index']);
-Route::post('/pastbulletins', [BulletinController::class, 'store'])->middleware('admin');
-Route::get('/pastbulletins/{pastbulletins}/edit', [BulletinController::class, 'edit'])->middleware('admin');
-Route::put('/pastbulletins/{pastbulletins}', [BulletinController::class, 'update'])->middleware('admin');
-Route::delete('/pastbulletins/{pastbulletins}', [BulletinController::class, 'destroy'])->middleware('admin');
-Route::get('/contactus', [ContactUsController::class, 'index'])->middleware('admin');
-Route::get('/contactus/create', [ContactUsController::class, 'create']);
-Route::post('/contactus', [ContactUsController::class, 'store']);
-Route::delete('/contactus/{contactus}', [ContactUsController::class, 'destroy'])->middleware('admin');
+Route::get('/size', [SizeController::class, 'index']);
+Route::post('size', [SizeController::class, 'store'])->middleware('admin');
+Route::get('/size/{size}', [SizeController::class, 'show']);
+Route::get('/size/{size}/edit', [SizeController::class, 'edit'])->middleware('admin');
+Route::post('/size/{size}', [SizeController::class, 'update'])->middleware('admin');
+Route::delete('/size/{size}', [SizeController::class, 'destroy'])->middleware('admin');
+Route::get('/bulletin', [BulletinController::class, 'index']);
+Route::post('/bulletin', [BulletinController::class, 'store'])->middleware('admin');
+Route::get('/bulletin/{bulletin}/edit', [BulletinController::class, 'edit'])->middleware('admin');
+Route::post('/bulletin/{bulletin}', [BulletinController::class, 'update'])->middleware('admin');
+Route::delete('/bulletin/{bulletin}', [BulletinController::class, 'destroy'])->middleware('admin');
+Route::get('/contactUs', [ContactUsController::class, 'index'])->middleware('admin');
+Route::get('/contactUs/create', [ContactUsController::class, 'create']);
+Route::post('/contactUs', [ContactUsController::class, 'store']);
+Route::delete('/contactUs/{contactUs}', [ContactUsController::class, 'destroy'])->middleware('admin');
 Route::get('/order', [OrderController::class, 'index'])->middleware('admin');
-Route::post('/order', [OrderController::class, 'store']);
-Route::delete('/order/{id}', [OrderController::class, 'destroy'])->middleware('admin');
-
- Route::get('/users', [RegisteredUserController::class, 'index'])->middleware('admin');
- Route::get('/user', [RegisteredUserController::class, 'show'])->middleware('auth');
+Route::post('/order', [OrderController::class, 'store'])->middleware('auth');
+Route::delete('/order/{order}', [OrderController::class, 'destroy'])->middleware('admin');
+Route::get('/user', [RegisteredUserController::class, 'index'])->middleware('admin');
+Route::get('/user/{user}', [RegisteredUserController::class, 'show'])->middleware('auth');
 require __DIR__ . '/auth.php';

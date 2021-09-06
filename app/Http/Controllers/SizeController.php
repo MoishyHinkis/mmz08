@@ -18,7 +18,8 @@ class SizeController extends Controller
     public function index()
     {
         //
-        return inertia::render('PriceList', ['ads' => Size::all()]);
+        // dd(__('bsd'))
+        return inertia::render('PriceList', ['sizes' => Size::all()]);
     }
 
     /**
@@ -43,10 +44,10 @@ class SizeController extends Controller
         Size::create([
             'name' => $request->input('name'),
             'path' => $path,
-            'footer' => $request->input('price'),
+            'price' => $request->input('price'),
         ]);
-        $request->file('file')->storeAs('images', $path);
-        return redirect('/pricelist');
+        $request->file('file')->storeAs('sizes', $path);
+        return redirect('/size');
     }
 
     /**
@@ -55,11 +56,10 @@ class SizeController extends Controller
      * @param  \App\Models\Size  $size
      * @return \Illuminate\Http\Response
      */
-    public function show(Size $size, String $pricelist)
+    public function show(Size $size)
     {
         //
-        $ad = DB::table('sizes')->where('name',$pricelist)->first();
-        return inertia::render('Buy', ['ad' => $ad]);
+        return inertia::render('Buy', ['size' => $size]);
     }
 
     /**
@@ -68,12 +68,10 @@ class SizeController extends Controller
      * @param  \App\Models\Size  $size
      * @return \Illuminate\Http\Response
      */
-    public function edit(String $str)
+    public function edit(Size $size)
     {
         //
-        $data = DB::table('sizes')->where('id', $str)->first();
-
-        return inertia::render('EditSizeForm', ['ad' => $data]);
+        return inertia::render('EditSizeForm', ['size' => $size]);
     }
 
     /**
@@ -83,19 +81,18 @@ class SizeController extends Controller
      * @param  \App\Models\Size  $size
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Size $size, String $pricelist)
+    public function update(Request $request, Size $size)
     {
         //
-        $size = DB::table('sizes')->where('name',$pricelist)->first();
-        // $path = $request->file('file')->getClientOriginalName();
-        // dd($path);
-        DB::table('sizes')->where('name', $pricelist)->update([
+        $path = $request->file('file')->getClientOriginalName();
+        Size::find($size->id)->update([
             'name' => $request->name,
-            'footer' => $request->footer,
+            'price' => $request->price,
+            'path' => $path
         ]);
-        // $request->file('file')->storeAs('images', $path);
-        // Storage::delete('images/' . $size[0]->path);
-        return redirect('/pricelist');
+        $request->file('file')->storeAs('sizes', $path);
+        Storage::delete('sizes/' . $size->path);
+        return redirect('/size');
     }
 
     /**
@@ -104,12 +101,11 @@ class SizeController extends Controller
      * @param  \App\Models\Size  $size
      * @return \Illuminate\Http\Response
      */
-    public function destroy(String $pricelist)
+    public function destroy(Size $size)
     {
         //
-        $size = DB::table('sizes')->where('id', $pricelist)->get();
-        Storage::delete('images/' . $size[0]->path);
-        DB::table('sizes')->where('id', $pricelist)->delete();
+        Size::find($size->id)->delete();
+        Storage::delete('sizes/' . $size[0]->path);
         return redirect('/pricelist');
     }
 }

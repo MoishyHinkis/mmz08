@@ -17,7 +17,7 @@ class CreateSizesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('path')->nullable();
-            $table->integer('footer');
+            $table->integer('price');
             $table->timestamps();
         });
     }

@@ -21,7 +21,7 @@ class OrderController extends Controller
     public function index()
     {
         //
-        return inertia::render('AllOrders', ['orders' => Order::all(), 'back' => 'pricelist', 'referrer'=>'order']);
+        return inertia::render('AllOrders', ['orders' => Order::all()]);
         // return Order::all();
     }
 
@@ -69,7 +69,7 @@ class OrderController extends Controller
                 $file
             )
         );
-        return redirect('/pricelist');
+        return redirect('/size');
     }
 
     /**
@@ -106,7 +106,7 @@ class OrderController extends Controller
     public function update(Request $request, Order $order)
     {
         //
-        dd('order edit');
+        dd('order update');
     }
 
     /**
@@ -115,11 +115,11 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order, String $id)
+    public function destroy(Order $order)
     {
         //
-        $order = DB::table('orders')->where('id',$id)->first();
-        DB::table('orders')->where('id',$id)->delete();
+        // dd($order);
+        Order::find($order->id)->delete();
         Storage::delete('orders/'.$order->file_path);
         return redirect('/order');
         

@@ -24,7 +24,7 @@ export default {
   setup(props) {
     const form = useForm(props.ad);
     function deleted() {
-      form.delete(`/${props.Referrer}/${props.ad.id}`);
+      form.delete(`/${props.referrer}/${props.ad.id}`);
     }
     return { deleted };
   },

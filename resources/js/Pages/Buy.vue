@@ -2,15 +2,13 @@
   <div>
     <layout>
       <div class="w3-text-blue w3-center w3-margin">
-        <Link href="/pricelist" class="w3-margin"
-          >back to price list &rarr;</Link
-        >
+        <Link href="/size" class="w3-margin">back to price list &rarr;</Link>
         <Link href="/" class="w3-margin">back to main page &rarr;</Link>
       </div>
       <div class="w3-cell-row cellrow center">
         <div class="center">
-          <div class="w3-cell w3-card w3-margin w3-mobile cell">
-            <ad :ad="ad" footerSign="fas fa-shekel-sign"></ad>
+          <div class="w3-cell w3-card w3-mobile cell">
+            <size :size="size" footerSign="fas fa-shekel-sign"></size>
           </div>
           <div class="w3-cell w3-mobile w3-card cell">
             <validation-errors></validation-errors>
@@ -55,7 +53,7 @@
                 cols="30"
                 rows="5"
                 v-model="form.text"
-                placeholder="the text you want in the ad goes here"
+                placeholder="the text you want in the size goes here"
                 class="w3-input"
               ></textarea
               ><br /><br />
@@ -79,7 +77,7 @@
                 Buy
               </button>
               <span
-                >Total Price: {{ ad.footer * form.times }}
+                >Total Price: {{ size.price * form.times }}
                 <i class="fas fa-shekel-sign"></i
               ></span>
             </form>
@@ -93,19 +91,19 @@
 <script>
 import { useForm } from "@inertiajs/inertia-vue3";
 import Layout from "../Shared/Layout.vue";
-import Ad from "../Components/Ad.vue";
+import Size from "../Components/Size.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 import ValidationErrors from "@/Components/ValidationErrors.vue";
 export default {
   name: "Buy",
   components: {
     Layout,
-    Ad,
+    Size,
     Link,
     ValidationErrors,
   },
   props: {
-    ad: Object,
+    size: Object,
   },
   data() {
     return {
@@ -118,7 +116,7 @@ export default {
         text: null,
         comments: null,
         file: null,
-        price: null
+        price: null,
       }),
     };
   },
@@ -129,11 +127,11 @@ export default {
         this.form.email = this.$page.props.auth.user.email;
         this.form.phone = this.$page.props.auth.user.phone;
       }
-      this.form.size = this.ad.name;
-      this.form.price = this.ad.footer * this.form.times
-      alert("you order recived");
-      this.form.post("/order");
-      this.form.reset();
+      this.form.size = this.size.name;
+      this.form.price = this.size.footer * this.form.times;
+      this.form.post("/order", {
+        onSuccess: () => [alert("you order recived"), this.form.reset()],
+      });
     },
   },
 };
@@ -151,10 +149,10 @@ export default {
   margin-left: auto;
   margin-right: auto;
 }
-.cellrow{
+.cellrow {
   width: 50%;
 }
-.cell{
+.cell {
   width: 50%;
 }
 </style>>

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\ContactUs;
+use App\Models\Order;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -64,11 +67,10 @@ class RegisteredUserController extends Controller
         return redirect('/main');
     }
 
-    public function show(Request $request)
+    public function show(User $user)
     {
-        $user = DB::table('users')->where('name', $request->name)->first();
-        $orders = DB::table('orders')->where('name', $request->name)->get();
-        $contactus = DB::table('contact_us')->where('name', $request->name)->get();
-        return Inertia::render('User', ['user' => $user, 'orders' => $orders, 'contactus' => $contactus]);
+        $orders = DB::table('orders')->where('name', $user->name)->get();
+        $contactus = DB::table('contact_us')->where('name', $user->name)->get();
+        return Inertia::render('User', ['user' => $user, 'orders' => $orders, 'contactUs' => $contactus]);
     }
 }

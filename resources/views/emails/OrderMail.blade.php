@@ -5,6 +5,7 @@ Name: {{ $order->name }} <br>
 Email: {{ $order->email }} <br>
 Phone: {{ $order->phone }} <br>
 Times: {{ $order->times }} <br>
+Pricr: {{ $order->price }} <br>
 Text: {{ $order->text }} <br>
 Comments: {{ $order->comments }} <br>
 

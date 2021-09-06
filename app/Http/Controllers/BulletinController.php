@@ -18,7 +18,7 @@ class BulletinController extends Controller
     public function index()
     {
         //
-        return inertia::render('PastBulletins', ['ads' => Bulletin::all()]);
+        return inertia::render('PastBulletins', ['bulletins' => Bulletin::all()]);
     }
 
     /**
@@ -43,12 +43,12 @@ class BulletinController extends Controller
         $path = $request->file('file')->getClientOriginalName();
         Bulletin::create([
             'name' => $request->input('name'),
-            'footer' => $request->input('footer'),
+            'date' => $request->input('date'),
             'link' => $request->input('link'),
             'path' => $path,
         ]);
-        $request->file('file')->storeAs('images', $path);
-        return redirect('/pastbulletins');
+        $request->file('file')->storeAs('bulletins', $path);
+        return redirect('/bulletin');
     }
 
     /**
@@ -68,12 +68,11 @@ class BulletinController extends Controller
      * @param  \App\Models\Bulletin  $bulletin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Bulletin $bulletin, String $pastbulletin)
+    public function edit(Bulletin $bulletin)
     {
         //
-        $data = DB::table('bulletins')->where('id', $pastbulletin)->first();
-        // dd($data);
-        return inertia::render('EditBulletinForm', ['ad' => $data]);
+        Bulletin::find($bulletin->id);
+        return inertia::render('EditBulletinForm', ['bulletin' => $bulletin]);
     }
 
     /**
@@ -83,16 +82,16 @@ class BulletinController extends Controller
      * @param  \App\Models\Bulletin  $bulletin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bulletin $bulletin, String $pastbulletins)
+    public function update(Request $request, Bulletin $bulletin)
     {
         //
-        DB::table('bulletins')->where('name', $pastbulletins)->update([
+        Bulletin::find($bulletin->id)->update([
             'name' => $request->input('name'),
             // 'path' => $request->path,
             'link' => $request->input('link'),
-            'footer' => $request->input('footer'),
+            'date' => $request->input('date'),
         ]);
-        return redirect('/pastbulletins');
+        return redirect('/bulletin');
     }
 
     /**
@@ -101,12 +100,11 @@ class BulletinController extends Controller
      * @param  \App\Models\Bulletin  $bulletin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bulletin $bulletin, String $pastbulletins)
+    public function destroy(Bulletin $bulletin)
     {
         //
-        $bulletin = DB::table('bulletins')->where('id', $pastbulletins)->first();
-        Storage::delete('images/' . $bulletin->path);
-        DB::table('bulletins')->where('id', $pastbulletins)->delete();
-        return redirect('/pastbulletins');
+        Bulletin::find($bulletin->id)->delete();
+        Storage::delete('bulletins/' . $bulletin->path);
+        return redirect('/bulletin');
     }
 }

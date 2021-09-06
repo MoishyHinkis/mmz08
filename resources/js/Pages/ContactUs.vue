@@ -4,54 +4,54 @@
       <layout>
         <div v-if="Authorization()" class="w3-center">
           <button class="w3-btn w3-green w3-margin">
-            <Link href="/contactus">show all forms &rarr;</Link>
+            <Link href="/contactUs">show all forms &rarr;</Link>
           </button>
         </div>
-          <div class="w3-mobile w3-card center form">
-            <h3 class="w3-border-bottom w3-center">Contact Us Form</h3>
-            <validation-errors></validation-errors>
-            <form @submit.prevent="sendForm" class="w3-container w3-margin">
-              <div v-if="!$page.props.auth.user">
-                <label for="name">Name</label><br />
-                <input
-                  type="text"
-                  name="name"
-                  v-model="form.name"
-                  placeholder="name"
-                  class="w3-input"
-                /><br /><br />
-                <label for="email">Email</label><br />
-                <input
-                  type="email"
-                  name="email"
-                  v-model="form.email"
-                  placeholder="Email"
-                  class="w3-input"
-                /><br /><br />
-                <label for="phone">Phone</label><br />
-                <input
-                  type="number"
-                  name="phone"
-                  v-model="form.phone"
-                  placeholder="Phone"
-                  class="w3-input"
-                /><br /><br />
-              </div>
-              <label for="subject">Subject</label><br />
-              <textarea
-                name="subject"
-                cols="30"
-                rows="5"
-                v-model="form.subject"
+        <div class="w3-mobile w3-card center form">
+          <h3 class="w3-border-bottom w3-center">Contact Us Form</h3>
+          <validation-errors></validation-errors>
+          <form @submit.prevent="sendForm" class="w3-container w3-margin">
+            <div v-if="!$page.props.auth.user">
+              <label for="name">Name</label><br />
+              <input
+                type="text"
+                name="name"
+                v-model="form.name"
+                placeholder="name"
                 class="w3-input"
-              ></textarea
-              ><br /><br />
-              <div class="w3-center">
-                <button class="w3-btn w3-green w3-margin" type="submit">
-                  Send Form
-                </button>
-              </div>
-            </form>
+              /><br /><br />
+              <label for="email">Email</label><br />
+              <input
+                type="email"
+                name="email"
+                v-model="form.email"
+                placeholder="Email"
+                class="w3-input"
+              /><br /><br />
+              <label for="phone">Phone</label><br />
+              <input
+                type="number"
+                name="phone"
+                v-model="form.phone"
+                placeholder="Phone"
+                class="w3-input"
+              /><br /><br />
+            </div>
+            <label for="subject">Subject</label><br />
+            <textarea
+              name="subject"
+              cols="30"
+              rows="5"
+              v-model="form.subject"
+              class="w3-input"
+            ></textarea
+            ><br /><br />
+            <div class="w3-center">
+              <button class="w3-btn w3-green w3-margin" type="submit">
+                Send Form
+              </button>
+            </div>
+          </form>
         </div>
       </layout>
     </div>
@@ -72,7 +72,7 @@ export default {
   },
   data() {
     return {
-      admin: "Mthinkis@gmail.com",
+      admin: this.$page.props.admin,
       form: useForm({
         name: null,
         email: null,
@@ -88,8 +88,9 @@ export default {
         this.form.email = this.$page.props.auth.user.email;
         this.form.phone = this.$page.props.auth.user.phone;
       }
-      alert("you order recived");
-      this.form.post("/contactus");
+      this.form.post("/contactUs", {
+        onSuccess: () => alert("you order recived"),
+      });
       this.form.reset();
     },
     Authentication() {
@@ -109,15 +110,12 @@ export default {
 };
 </script>
 <style>
-  .space{
-    color:  rgb(236, 239, 248)
-  }
-  .center{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .form{
-    width: 25%;
-  }
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.form {
+  width: 50%;
+}
 </style>
