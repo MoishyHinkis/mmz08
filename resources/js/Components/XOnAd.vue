@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div class="flex items-center p-2 space-x-3">
       <i class="fas fa-times w3-text-red" @click="deleted"> </i>
       <Link :href="`/${referrer}/${ad.id}/edit`">
         <i class="fas fa-pen-fancy"></i>
