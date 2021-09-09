@@ -27,7 +27,7 @@
       <div>
         <Link
           class="w3-bar-item w3-right w3-hover-light-blue w3-mobile"
-          href="/logout"
+          :href="route('logout')"
           method="post"
           as="button"
           >Logout</Link
@@ -42,14 +42,14 @@
           >Register</Link
         >
         <Link
-          href="/login"
+          :href="route('login')"
           class="w3-bar-item w3-right w3-hover-light-blue w3-mobile"
           >Log in</Link
         >
       </div>
     </div>
     <div class="w3-bar-item w3-hide-small">
-      <img src="../../images/logo.jpg" style="width: 60px" />
+      <img src="/images/logo.jpg" style="width: 60px" />
     </div>
   </div>
 </template>
@@ -66,7 +66,7 @@ export default {
       admin: this.$page.props.admin,
       tabs: [
         {
-          name: 'Main',
+          name: "Main",
           path: "/main",
         },
         {
