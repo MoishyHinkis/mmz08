@@ -41,12 +41,12 @@ class SizeController extends Controller
     public function store(Request $request)
     {
         $path = $request->file('file')->getClientOriginalName();
+        $request->file('file')->storeAs('public/sizes', $path);
         Size::create([
             'name' => $request->input('name'),
             'path' => $path,
             'price' => $request->input('price'),
         ]);
-        $request->file('file')->storeAs('sizes', $path);
         return redirect('/size');
     }
 
@@ -85,7 +85,7 @@ class SizeController extends Controller
     {
         //
         $path = $request->file('file')->getClientOriginalName();
-        Size::find($size->id)->update([
+        $size->update([
             'name' => $request->name,
             'price' => $request->price,
             'path' => $path
@@ -104,8 +104,8 @@ class SizeController extends Controller
     public function destroy(Size $size)
     {
         //
-        Size::find($size->id)->delete();
-        Storage::delete('sizes/' . $size[0]->path);
-        return redirect('/pricelist');
+        Storage::delete('public/sizes/' . $size->path);
+        $size->delete();
+        return back();
     }
 }
