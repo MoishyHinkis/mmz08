@@ -45,12 +45,12 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         //
-         $filePath = null;
-         $file = '';
+        $filePath = null;
+        $file = '';
         if ($request->file('file') !== null) {
             $filePath = $request->file('file')->getClientOriginalName();
-            $file = $request->file('file')->storeAs('orders',$filePath);
-         }
+            $file = $request->file('file')->storeAs('orders', $filePath);
+        }
 
         $order = Order::create([
             'size' => $request->input('size'),
@@ -63,7 +63,7 @@ class OrderController extends Controller
             'file_path' => $filePath,
             'price' => $request->price
         ]);
-        Mail::to(RouteServiceProvider::ADMIN)->send(
+        Mail::to(env('ADMIN'))->send(
             new OrderMail(
                 $order,
                 $file
@@ -120,8 +120,7 @@ class OrderController extends Controller
         //
         // dd($order);
         Order::find($order->id)->delete();
-        Storage::delete('orders/'.$order->file_path);
+        Storage::delete('orders/' . $order->file_path);
         return redirect('/order');
-        
     }
 }

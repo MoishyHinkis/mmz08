@@ -3,16 +3,18 @@
     <layout>
       <div class="lightblue">
         <div class="w3-content">
-          <div>
+          <div class="px-80 m-8">
             <img src="../../images/logo.jpg" />
           </div>
         </div>
         <div class="w3-padding w3-margin">
           BSD
           <br />
-          <h3>In honor of our dear customers, hello and congratulations!</h3>
+          <h3 class="text-blue-500">
+            In honor of our dear customers, hello and congratulations!
+          </h3>
           <br />
-          <h5 class="w3-text-orange">
+          <h5 class="text-yellow-500">
             Thank you for choosing to publish in our newspaper
           </h5>
           <br />
@@ -23,7 +25,7 @@
             copies in the mailboxes.
           </p>
           <br />
-          <h5>
+          <h5 class="text-blue-500">
             The newspaper is acceptable to all rabbis and all circles in the
             neighborhood, without exception !!
           </h5>
@@ -37,12 +39,12 @@
             etc. etc. .
           </p>
           <br />
-          <h5>
+          <h5 class="text-blue-500">
             The newspaper counts about 100 pages a week, and over 90% of the ads
             are ads from the neighborhood.
           </h5>
           <br />
-          <h4 class="w3-text-orange">
+          <h4 class="text-yellow-500">
             So if you are a want newspaper that really reads it - you have come
             to the right place.
           </h4>
@@ -59,7 +61,6 @@
       </div>
     </layout>
   </div>
-  
 </template>
 
 <script>
@@ -71,21 +72,3 @@ export default {
   name: "Main",
 };
 </script>
-<style scoped>
-h3,
-h4,
-h5 {
-  color: blue;
-}
-.space {
-  color: rgb(236, 239, 248);
-}
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10px;
-  margin-bottom: auto;
-  width: 20%;
-}
-</style>

@@ -38,7 +38,7 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
-            'admin' =>  RouteServiceProvider::ADMIN
+            'admin' =>  env('ADMIN')
         ]);
     }
 }

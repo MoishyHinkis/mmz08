@@ -47,7 +47,7 @@ class ContactUsController extends Controller
             'phone' => $request->input('phone'),
             'subject' => $request->input('subject'),
         ]);
-        Mail::to(RouteServiceProvider::ADMIN)->send(new ContactUsMail($contactUs));
+        Mail::to(env('ADMIN'))->send(new ContactUsMail($contactUs));
         return redirect('/contactUs/create');
     }
 
