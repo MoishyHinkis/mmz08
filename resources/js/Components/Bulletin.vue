@@ -5,12 +5,7 @@
         <h5>{{ bulletin.name }}</h5>
       </div>
       <div class="w3-border">
-        <img
-          :src="
-            require(`../../../storage/app/bulletins/${bulletin.path}`).default
-          "
-          v-if="fileExists(bulletin.path)"
-        />
+        <img :src="bulletin.path" v-if="fileExists(bulletin.path)" />
         <div v-else>
           file dont exsits... <br />
           we working on this

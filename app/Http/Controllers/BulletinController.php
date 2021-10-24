@@ -47,7 +47,7 @@ class BulletinController extends Controller
             'link' => $request->input('link'),
             'path' => $path,
         ]);
-        $request->file('file')->storeAs('bulletins', $path);
+        $request->file('file')->storeAs('public/bulletins', $path);
         return redirect('/bulletin');
     }
 
@@ -104,7 +104,7 @@ class BulletinController extends Controller
     {
         //
         Bulletin::find($bulletin->id)->delete();
-        Storage::delete('bulletins/' . $bulletin->path);
+        Storage::delete('public/bulletins/' . $bulletin->path);
         return redirect('/bulletin');
     }
 }

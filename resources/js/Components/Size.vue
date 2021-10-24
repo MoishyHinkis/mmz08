@@ -5,10 +5,7 @@
         <h5>{{ size.name }}</h5>
       </div>
       <div class="w3-border">
-        <img
-          :src="require(`../../../storage/app/sizes/${size.path}`).default"
-          v-if="fileExists(size.path)"
-        />
+        <img :src="size.path" v-if="fileExists(size.path)" />
         <div v-else>
           file dont exsits... <br />
           we working on this

@@ -46,7 +46,7 @@ class SizeController extends Controller
             'path' => $path,
             'price' => $request->input('price'),
         ]);
-        $request->file('file')->storeAs('sizes', $path);
+        $request->file('file')->storeAs('public/sizes', $path);
         return redirect('/size');
     }
 
@@ -90,7 +90,7 @@ class SizeController extends Controller
             'price' => $request->price,
             'path' => $path
         ]);
-        $request->file('file')->storeAs('sizes', $path);
+        $request->file('file')->storeAs('public/sizes', $path);
         Storage::delete('sizes/' . $size->path);
         return redirect('/size');
     }
@@ -104,7 +104,7 @@ class SizeController extends Controller
     public function destroy(Size $size)
     {
         //
-        Storage::delete('sizes/' . $size->path);
+        Storage::delete('public/sizes/' . $size->path);
         Size::find($size->id)->delete();
         return redirect('/pricelist');
     }
