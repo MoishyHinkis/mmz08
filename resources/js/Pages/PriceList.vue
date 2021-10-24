@@ -29,7 +29,7 @@
                 </x-on-ad>
                 <button @click="showSize(size)">
                     <size :size="size"></size>
-                    {{ size.path }}
+                    <!-- {{ size.path }} -->
                 </button>
               </div>
             </div>

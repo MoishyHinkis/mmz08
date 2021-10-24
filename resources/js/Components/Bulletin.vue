@@ -6,7 +6,9 @@
       </div>
       <div class="w3-border">
         <img
-          :src="require(`../../../storage/app/bulletins/${bulletin.path}`).default"
+          :src="
+            require(`../../../storage/app/bulletins/${bulletin.path}`).default
+          "
           v-if="fileExists(bulletin.path)"
         />
         <div v-else>

@@ -104,8 +104,8 @@ class SizeController extends Controller
     public function destroy(Size $size)
     {
         //
+        Storage::delete('sizes/' . $size->path);
         Size::find($size->id)->delete();
-        Storage::delete('sizes/' . $size[0]->path);
         return redirect('/pricelist');
     }
 }

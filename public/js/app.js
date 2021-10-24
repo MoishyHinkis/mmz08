@@ -22555,9 +22555,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           size: size
         }, null, 8
         /* PROPS */
-        , ["size"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(size.path), 1
-        /* TEXT */
-        )], 8
+        , ["size"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" {{ size.path }} ")], 8
         /* PROPS */
         , _hoisted_8)])]);
       }), 128
@@ -23585,6 +23583,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./storage/app/bulletins/20190912_060718.jpg":
+/*!***************************************************!*\
+  !*** ./storage/app/bulletins/20190912_060718.jpg ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/20190912_060718.jpg?bfe89def24235d6be52c6aa5de110ee7");
+
+/***/ }),
+
 /***/ "./storage/app/bulletins/preview11.07.2021.jpg":
 /*!*****************************************************!*\
   !*** ./storage/app/bulletins/preview11.07.2021.jpg ***!
@@ -23597,36 +23610,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/preview11.07.2021.jpg?eea37466a99e169f145b566a65d4a4b4");
-
-/***/ }),
-
-/***/ "./storage/app/sizes/אוזן.jpg":
-/*!************************************!*\
-  !*** ./storage/app/sizes/אוזן.jpg ***!
-  \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/אוזן.jpg?d8fd604483a37f215474eefee1e66116");
-
-/***/ }),
-
-/***/ "./storage/app/sizes/עמוד שלם.jpg":
-/*!****************************************!*\
-  !*** ./storage/app/sizes/עמוד שלם.jpg ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/עמוד שלם.jpg?fd29380ed7ab543bc5d37acc7b0e2400");
 
 /***/ }),
 
@@ -49491,6 +49474,7 @@ webpackContext.id = "./resources/js/Pages sync recursive ^\\.\\/.*\\.vue$";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
+	"./20190912_060718.jpg": "./storage/app/bulletins/20190912_060718.jpg",
 	"./preview11.07.2021.jpg": "./storage/app/bulletins/preview11.07.2021.jpg"
 };
 
@@ -49520,32 +49504,17 @@ webpackContext.id = "./storage/app/bulletins sync recursive ^\\.\\/.*$";
 /*!******************************************!*\
   !*** ./storage/app/sizes/ sync ^\.\/.*$ ***!
   \******************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module) => {
 
-var map = {
-	"./אוזן.jpg": "./storage/app/sizes/אוזן.jpg",
-	"./עמוד שלם.jpg": "./storage/app/sizes/עמוד שלם.jpg"
-};
-
-
-function webpackContext(req) {
-	var id = webpackContextResolve(req);
-	return __webpack_require__(id);
+function webpackEmptyContext(req) {
+	var e = new Error("Cannot find module '" + req + "'");
+	e.code = 'MODULE_NOT_FOUND';
+	throw e;
 }
-function webpackContextResolve(req) {
-	if(!__webpack_require__.o(map, req)) {
-		var e = new Error("Cannot find module '" + req + "'");
-		e.code = 'MODULE_NOT_FOUND';
-		throw e;
-	}
-	return map[req];
-}
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = "./storage/app/sizes sync recursive ^\\.\\/.*$";
+webpackEmptyContext.keys = () => ([]);
+webpackEmptyContext.resolve = webpackEmptyContext;
+webpackEmptyContext.id = "./storage/app/sizes sync recursive ^\\.\\/.*$";
+module.exports = webpackEmptyContext;
 
 /***/ }),
 
