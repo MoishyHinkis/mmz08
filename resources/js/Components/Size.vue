@@ -5,7 +5,7 @@
         <h5>{{ size.name }}</h5>
       </div>
       <div class="w3-border">
-        <img :src="size.path" v-if="fileExists(size.path)" />
+        <img :src="img.default" v-if="fileExists(size.path)" />
         <div v-else>
           file dont exsits... <br />
           we working on this
@@ -27,13 +27,18 @@ export default {
   props: {
     size: Object,
   },
+  data() {
+    return {
+      img: "",
+    };
+  },
   methods: {
     fileExists(path) {
       try {
-        require(`../../../storage/app/sizes/${path}`);
+        this.img = require(`../../../storage/app/public/sizes/${path}`);
         return true;
       } catch (error) {
-        console.log(error);
+        console.log("error: ", error);
         return false;
       }
     },

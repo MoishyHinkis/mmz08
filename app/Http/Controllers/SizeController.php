@@ -105,7 +105,7 @@ class SizeController extends Controller
     {
         //
         Storage::delete('public/sizes/' . $size->path);
-        Size::find($size->id)->delete();
-        return redirect('/pricelist');
+        $size->delete();
+        return redirect()->back();
     }
 }

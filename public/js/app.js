@@ -19149,14 +19149,18 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     bulletin: Object
   },
+  data: function data() {
+    return {
+      img: ""
+    };
+  },
   methods: {
     fileExists: function fileExists(path) {
       try {
-        __webpack_require__("./storage/app/bulletins sync recursive ^\\.\\/.*$")("./".concat(path));
-
+        this.img = __webpack_require__("./storage/app/public/bulletins sync recursive ^\\.\\/.*$")("./".concat(path));
         return true;
       } catch (error) {
-        console.log(error);
+        console.log("error: ", error);
         return false;
       }
     }
@@ -19276,14 +19280,18 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     size: Object
   },
+  data: function data() {
+    return {
+      img: ""
+    };
+  },
   methods: {
     fileExists: function fileExists(path) {
       try {
-        __webpack_require__("./storage/app/sizes sync recursive ^\\.\\/.*$")("./".concat(path));
-
+        this.img = __webpack_require__("./storage/app/public/sizes sync recursive ^\\.\\/.*$")("./".concat(path));
         return true;
       } catch (error) {
-        console.log(error);
+        console.log("error: ", error);
         return false;
       }
     }
@@ -20266,10 +20274,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [$options.fileExists($props.bulletin.path) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
     key: 0,
-    src: __webpack_require__("./storage/app/bulletins sync recursive ^\\.\\/.*$")("./".concat($props.bulletin.path))["default"]
+    src: $data.img["default"]
   }, null, 8
   /* PROPS */
-  , _hoisted_4)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, _hoisted_9))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.bulletin.price), 1
+  , _hoisted_4)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, _hoisted_9))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.bulletin.date), 1
   /* TEXT */
   )])])]);
 }
@@ -20597,7 +20605,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [$options.fileExists($props.size.path) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
     key: 0,
-    src: __webpack_require__("./storage/app/sizes sync recursive ^\\.\\/.*$")("./".concat($props.size.path))["default"]
+    src: $data.img["default"]
   }, null, 8
   /* PROPS */
   , _hoisted_4)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, _hoisted_9))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.size.price) + " ", 1
@@ -23583,10 +23591,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./storage/app/bulletins/20190912_060718.jpg":
-/*!***************************************************!*\
-  !*** ./storage/app/bulletins/20190912_060718.jpg ***!
-  \***************************************************/
+/***/ "./storage/app/public/bulletins/ekev.jpg":
+/*!***********************************************!*\
+  !*** ./storage/app/public/bulletins/ekev.jpg ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -23594,14 +23602,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/20190912_060718.jpg?bfe89def24235d6be52c6aa5de110ee7");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/ekev.jpg?ebf34bad645f8158bcfd10ab2d303e5a");
 
 /***/ }),
 
-/***/ "./storage/app/bulletins/preview11.07.2021.jpg":
-/*!*****************************************************!*\
-  !*** ./storage/app/bulletins/preview11.07.2021.jpg ***!
-  \*****************************************************/
+/***/ "./storage/app/public/bulletins/pinchas.jpg":
+/*!**************************************************!*\
+  !*** ./storage/app/public/bulletins/pinchas.jpg ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -23609,7 +23617,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/preview11.07.2021.jpg?eea37466a99e169f145b566a65d4a4b4");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/pinchas.jpg?930d0d8643e311eb15e906f08aff16b0");
+
+/***/ }),
+
+/***/ "./storage/app/public/sizes/20190912_060718.jpg":
+/*!******************************************************!*\
+  !*** ./storage/app/public/sizes/20190912_060718.jpg ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/20190912_060718.jpg?288b5bbd83c4f31a4ef582a285672c70");
+
+/***/ }),
+
+/***/ "./storage/app/public/sizes/page.jpg":
+/*!*******************************************!*\
+  !*** ./storage/app/public/sizes/page.jpg ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/page.jpg?bdef59b76ae541f25a2cf190ebffe4d3");
 
 /***/ }),
 
@@ -49467,15 +49505,15 @@ webpackContext.id = "./resources/js/Pages sync recursive ^\\.\\/.*\\.vue$";
 
 /***/ }),
 
-/***/ "./storage/app/bulletins sync recursive ^\\.\\/.*$":
-/*!**********************************************!*\
-  !*** ./storage/app/bulletins/ sync ^\.\/.*$ ***!
-  \**********************************************/
+/***/ "./storage/app/public/bulletins sync recursive ^\\.\\/.*$":
+/*!*****************************************************!*\
+  !*** ./storage/app/public/bulletins/ sync ^\.\/.*$ ***!
+  \*****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
-	"./20190912_060718.jpg": "./storage/app/bulletins/20190912_060718.jpg",
-	"./preview11.07.2021.jpg": "./storage/app/bulletins/preview11.07.2021.jpg"
+	"./ekev.jpg": "./storage/app/public/bulletins/ekev.jpg",
+	"./pinchas.jpg": "./storage/app/public/bulletins/pinchas.jpg"
 };
 
 
@@ -49496,25 +49534,40 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = "./storage/app/bulletins sync recursive ^\\.\\/.*$";
+webpackContext.id = "./storage/app/public/bulletins sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
-/***/ "./storage/app/sizes sync recursive ^\\.\\/.*$":
-/*!******************************************!*\
-  !*** ./storage/app/sizes/ sync ^\.\/.*$ ***!
-  \******************************************/
-/***/ ((module) => {
+/***/ "./storage/app/public/sizes sync recursive ^\\.\\/.*$":
+/*!*************************************************!*\
+  !*** ./storage/app/public/sizes/ sync ^\.\/.*$ ***!
+  \*************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-function webpackEmptyContext(req) {
-	var e = new Error("Cannot find module '" + req + "'");
-	e.code = 'MODULE_NOT_FOUND';
-	throw e;
+var map = {
+	"./20190912_060718.jpg": "./storage/app/public/sizes/20190912_060718.jpg",
+	"./page.jpg": "./storage/app/public/sizes/page.jpg"
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
 }
-webpackEmptyContext.keys = () => ([]);
-webpackEmptyContext.resolve = webpackEmptyContext;
-webpackEmptyContext.id = "./storage/app/sizes sync recursive ^\\.\\/.*$";
-module.exports = webpackEmptyContext;
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "./storage/app/public/sizes sync recursive ^\\.\\/.*$";
 
 /***/ }),
 

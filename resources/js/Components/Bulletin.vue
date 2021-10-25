@@ -5,7 +5,7 @@
         <h5>{{ bulletin.name }}</h5>
       </div>
       <div class="w3-border">
-        <img :src="bulletin.path" v-if="fileExists(bulletin.path)" />
+        <img :src="img.default" v-if="fileExists(bulletin.path)" />
         <div v-else>
           file dont exsits... <br />
           we working on this
@@ -13,7 +13,7 @@
       </div>
       <div class="w3-center">
         <h5>
-          {{ bulletin.price }}
+          {{ bulletin.date }}
         </h5>
       </div>
     </div>
@@ -26,13 +26,18 @@ export default {
   props: {
     bulletin: Object,
   },
+  data() {
+    return {
+      img: "",
+    };
+  },
   methods: {
     fileExists(path) {
       try {
-        require(`../../../storage/app/bulletins/${path}`);
+        this.img = require(`../../../storage/app/public/bulletins/${path}`);
         return true;
       } catch (error) {
-        console.log(error);
+        console.log("error: ", error);
         return false;
       }
     },
